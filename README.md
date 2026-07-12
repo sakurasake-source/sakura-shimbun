@@ -123,5 +123,14 @@ report/issueNN/          # 一期一目录，互不覆盖
 - [x] 渲染脚本落盘 `render_report.py`（2026-07-12）
 - [x] 出刊/搬运流程 skill 化（2026-07-12）
 - [x] 存储治理：launchd 改 `--no-video`，视频按需单抓（2026-07-12）
+- [ ] **下次发布实测草稿箱路径**：`xhs_publish.py --mode draft` 存草稿→本人在 App 点发布（对照「私密转公开」验证流量降权传闻，见 docs/半月流量复盘方案.md）
+- [ ] 行程页接入官方源抓取（LE SSERAFIM 官网 SCHEDULE），摆脱对简中粉丝号的依赖
 - [ ] （可选）cr 图片水印位确认
 - [ ] 方向③：视频剪辑（切咲良单人镜头）R&D，未启动
+
+## 定时任务（launchd）
+
+| 任务 | 时间 | 干什么 |
+|---|---|---|
+| `com.sakusaku.sakuranews.weibo` | 每天 20:00 | 采集两个微博号（--no-video）+ 清理7天前媒体（保文本） |
+| `com.sakusaku.sakuranews.review` | 每月 1/16 日 21:00 | 弹通知提醒做半月流量复盘 |

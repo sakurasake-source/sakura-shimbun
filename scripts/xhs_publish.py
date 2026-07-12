@@ -96,14 +96,20 @@ def main():
     print(f"cookie ok（{len(cookies)}个），{'视频1个' if video else f'图{len(images)}张'}，准备启动浏览器…")
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(
+        # 持久化 profile：固定 user_data_dir，设备指纹稳定，
+        # 风控视角下每次发帖都是同一台机器（而不是每次一台新设备）
+        profile_dir = pathlib.Path(__file__).resolve().parent.parent / "data" / "xhs_profile"
+        profile_dir.mkdir(parents=True, exist_ok=True)
+        ctx = p.chromium.launch_persistent_context(
+            str(profile_dir),
             headless=False,
             args=["--disable-blink-features=AutomationControlled"],
             ignore_default_args=["--enable-automation"],
+            user_agent=UA,
+            viewport={"width": 1440, "height": 900},
         )
-        ctx = browser.new_context(user_agent=UA, viewport={"width": 1440, "height": 900})
         ctx.add_cookies(cookies)
-        page = ctx.new_page()
+        page = ctx.pages[0] if ctx.pages else ctx.new_page()
         # goto 偶发网络超时（已实测发生过），自动重试 3 次
         for attempt in range(1, 4):
             try:
@@ -342,7 +348,7 @@ def main():
             print(f"=== FILLED 完成，绝不自动发布。窗口保持 {args.hold}s，请审核后自己点『发布』 ===")
             page.wait_for_timeout(args.hold * 1000)
 
-        browser.close()
+        ctx.close()
 
 
 if __name__ == "__main__":

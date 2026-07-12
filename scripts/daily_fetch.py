@@ -210,6 +210,24 @@ def save_records(records, uid, want_media, s, want_video=True):
     idx.write_text(json.dumps(existing, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def prune_old_media(days=7):
+    """删除 N 天前日期目录下的图片/视频，post.json 和 _index.json 永久保留。
+    每天 20:00 随采集自动执行。注意：老期数日报的 HTML 引用的图会随之失效，
+    但渲染产物 pages/*.png 已落盘，不受影响。"""
+    cutoff = (datetime.date.today() - datetime.timedelta(days=days)).isoformat()
+    n, freed = 0, 0
+    for daydir in sorted(DATA.iterdir()) if DATA.exists() else []:
+        if not daydir.is_dir() or daydir.name >= cutoff:
+            continue
+        for f in daydir.rglob("*"):
+            if f.is_file() and (f.name.startswith("img_") or f.name.startswith("video_")):
+                freed += f.stat().st_size
+                f.unlink()
+                n += 1
+    if n:
+        log(f"清理: 删除 {cutoff} 之前的媒体 {n} 个，释放 {freed/1024/1024:.0f}MB（文本保留）")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", help="回溯到该日期 YYYY-MM-DD（翻页直到更早）")
@@ -287,6 +305,7 @@ def main():
 
     if not args.mblogid and not args.fresh:
         SEEN_FILE.write_text(json.dumps(seen, ensure_ascii=False, indent=2), encoding="utf-8")
+        prune_old_media(days=7)  # 只在每日例行采集时清理，单抓/回溯不触发
     log(f"完成: 本次共 {total_new} 条新博文 -> {DATA}")
 
 
