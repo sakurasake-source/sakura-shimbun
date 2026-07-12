@@ -16,13 +16,10 @@
 | `render_report.py` | 日报渲染：issueNN.html 的每个 .page → 1080×1440 PNG（`--html report/issueNN/issueNN.html`） |
 | `xhs_publish.py` | Phase 3 上稿：Playwright 传图/视频+填文案+设「仅自己可见」+发布（发布前校验 标题≤20字/tag≤10/正文≤1000/图≤18；goto 自动重试3次） |
 
-## 已装工具（tools/，均为辅助/备用）
+## 外部工具
 
-| 工具 | 位置 | 状态 |
-|---|---|---|
-| **weiboSpider** | `tools/weiboSpider/` | ⚠️ 已弃用——采集由 `daily_fetch.py`（直连 ajax API）实现，此库从未投产 |
-| **XHS-Downloader** | `tools/XHS-Downloader/` | 风格分析原料采集用过一轮，现闲置备用 |
-| **agent-reach** | `~/.agent-reach-venv/` | 读 X/INS/网页做总结·翻译（只读，无发帖），Claude 直接调用 |
+- **agent-reach**（`~/.agent-reach-venv/`）：读 X/INS/网页做总结·翻译（只读，无发帖），Claude 直接调用
+- ~~weiboSpider~~ / ~~XHS-Downloader~~：2026-07-12 已删除（前者从未投产，后者风格语料已采完；需要时 GitHub 重新 clone）
 
 ## agent-reach 渠道状态
 
