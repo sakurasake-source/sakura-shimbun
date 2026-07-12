@@ -9,6 +9,8 @@
     <array>
         <string>/Users/sakusaku/Claude/サクラ新聞/.venv/bin/python</string>
         <string>/Users/sakusaku/Claude/サクラ新聞/scripts/daily_fetch.py</string>
+        <!-- 视频不日常全量下载（曾占存储94%），需要时按 mblogid 单抓 -->
+        <string>--no-video</string>
     </array>
 
     <key>WorkingDirectory</key>
