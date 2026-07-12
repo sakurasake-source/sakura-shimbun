@@ -1,0 +1,17 @@
+# 环境与外部工具（可重装）
+.venv/
+tools/
+
+# 采集数据（大、可重抓；850MB+）
+data/
+
+# 派生产物（render_report.py 可重新生成）
+report/*/pages/
+
+# 发布过程截图（一次性调试用）
+report/*/xhs_*.png
+
+# 系统
+.DS_Store
+__pycache__/
+*.pyc

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.sakusaku.sakuranews.weibo</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/sakusaku/Claude/サクラ新聞/.venv/bin/python</string>
+        <string>/Users/sakusaku/Claude/サクラ新聞/scripts/daily_fetch.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/sakusaku/Claude/サクラ新聞</string>
+
+    <!-- 每天 20:00（系统本地时间 = JST）触发一次 -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>20</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!-- 加载时不立即运行；只按上面的时间跑 -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/sakusaku/Claude/サクラ新聞/data/weibo_state/launchd.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/sakusaku/Claude/サクラ新聞/data/weibo_state/launchd.err.log</string>
+</dict>
+</plist>

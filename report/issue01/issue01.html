@@ -1,0 +1,259 @@
+<meta charset="utf-8">
+<title>サクラ新聞 第壱号</title>
+<style>
+  :root{
+    --deep:#ec5f92; --pink:#ffabca; --pinklt:#ffd7e6; --peach:#ffc9a9; --cream:#fff4f8;
+    --gold:#ffd35b; --leaf:#93d6ab; --fg:#6b3450; --muted:#a9748c; --ribink:#d5397a;
+    --maru:"Hiragino Maru Gothic ProN","YuGothic","PingFang SC",sans-serif;
+    --mincho:"Hiragino Mincho ProN","Yu Mincho","Songti SC",serif;
+    --hand:"Klee One","Hannotate SC","Yuppy SC","Hiragino Maru Gothic ProN",cursive;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:#e9d3dd; font-family:var(--maru); color:var(--fg); }
+  .sheet{ display:flex; flex-wrap:wrap; gap:24px; padding:24px; }
+
+  .page{ width:376px; height:501px; position:relative; overflow:hidden; flex:0 0 auto;
+    background:
+      radial-gradient(#ffabca24 2px, transparent 2.3px) 0 0/15px 15px,
+      radial-gradient(#ffc9a91f 2px, transparent 2.3px) 7px 7px/15px 15px,
+      linear-gradient(#fff6fa,#fff0f6);
+    box-shadow:0 6px 18px #b0517a33; }
+  .lace{ position:absolute; inset:7px; border-radius:8px; pointer-events:none; z-index:6;
+    box-shadow:inset 0 0 0 2.4px #fff, inset 0 0 0 4px #ffabcac0; }
+  .lace::before,.lace::after{ content:""; position:absolute; left:-2px; right:-2px; height:12px;
+    background:radial-gradient(circle at 7px 0,#ffabca 6px,transparent 6.5px) 0 0/14px 12px; }
+  .lace::before{ top:-2px; } .lace::after{ bottom:-2px; transform:scaleY(-1); }
+  .motif{ position:absolute; z-index:5; line-height:1; }
+  .pfoot{ position:absolute; left:12px; bottom:8px; z-index:9; font-size:8px; color:var(--muted); letter-spacing:.06em; }
+  .pno{ position:absolute; right:14px; bottom:8px; z-index:9; font-family:var(--mincho); font-weight:800; font-size:10px; color:var(--deep); }
+  img.im{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* sakkukku 圆形照片贴纸（用户选的原图） */
+  .skpic{ position:absolute; z-index:9; width:74px; height:74px; border-radius:50%; overflow:hidden;
+    box-shadow:0 4px 10px #b0517a44, 0 0 0 4px #fff, 0 0 0 6px var(--pink); }
+  .skpic img{ width:100%; height:100%; object-fit:cover; }
+  .sktag{ position:absolute; z-index:10; background:var(--deep); color:#fff; font-weight:800; font-size:7px;
+    padding:2px 6px; border-radius:20px; box-shadow:0 2px 3px #0002; }
+
+  /* 报头 */
+  .mtab{ position:absolute; left:13px; top:12px; z-index:8; background:var(--deep); color:#fff; font-weight:800; font-size:8px;
+    padding:8px 3px; border-radius:5px; writing-mode:vertical-rl; letter-spacing:.16em; }
+  .badge{ position:absolute; right:12px; top:8px; z-index:10; text-align:center; transform:rotate(6deg); }
+  .badge .circ{ width:38px; height:38px; border-radius:50%; background:var(--leaf); color:#fff; font-weight:800; font-size:21px;
+    display:grid; place-items:center; box-shadow:0 2px 5px #0002, inset 0 0 0 2.4px #fff; margin:0 auto; }
+  .badge .no{ font-size:8px; font-weight:800; color:var(--deep); margin-top:2px; text-shadow:0 1px 2px #fff; }
+  .mast{ position:relative; text-align:center; padding-top:20px; z-index:8; }
+  .mast .flow{ position:absolute; left:50%; top:24px; transform:translateX(-50%); width:250px; height:52px; border-radius:26px; background:#fff9; box-shadow:inset 0 0 0 2px #ffd7e6; }
+  .mast .t{ position:relative; display:inline-block; font-weight:800; font-size:52px; color:var(--deep);
+    -webkit-text-stroke:3.4px #fff; paint-order:stroke fill; text-shadow:0 5px 0 #ffb3d0, 3px 7px 5px #b0517a33; }
+  .mast .t span{ display:inline-block; }
+  .mast .t .brk{ font-size:16px; -webkit-text-stroke:0; vertical-align:15px; margin:0 1px; }
+  .mast .t .a{ transform:rotate(-6deg) translateY(2px); } .mast .t .b{ transform:rotate(5deg) translateY(-1px); }
+  .mast .t .c{ transform:rotate(-4deg) translateY(2px); } .mast .t .d{ transform:rotate(4deg); } .mast .t .e{ transform:rotate(-3deg) translateY(1px); }
+  .mast .sub{ display:block; margin-top:1px; font-family:var(--hand); font-size:9px; letter-spacing:.4em; color:var(--muted); padding-left:.4em; }
+
+  .ribbon{ position:relative; z-index:8; margin:8px 32px 0; background:linear-gradient(#fff,#fff4f8); border:2.6px solid var(--pink); border-radius:22px;
+    padding:7px 10px 8px; text-align:center; box-shadow:0 3px 0 #ffabca66; }
+  .ribbon::before,.ribbon::after{ content:""; position:absolute; top:50%; width:13px; height:17px; background:var(--pink);
+    clip-path:polygon(0 0,100% 22%,100% 78%,0 100%,32% 50%); transform:translateY(-50%); }
+  .ribbon::before{ left:-12px; } .ribbon::after{ right:-12px; transform:translateY(-50%) scaleX(-1); }
+  .ribbon .en{ font-weight:800; font-size:15px; color:var(--ribink); letter-spacing:.01em; }
+  .ribbon .jp{ font-family:var(--hand); font-size:11px; color:var(--fg); margin-top:2px; }
+
+  .stage{ position:relative; margin:7px 12px 0; height:250px; z-index:7; }
+  .doily{ position:absolute; inset:0; margin:auto; width:244px; height:244px; border-radius:50%;
+    background:radial-gradient(circle,#fff 66%,transparent 67%); }
+  .hero{ position:absolute; inset:0; margin:auto; width:178px; height:214px; border-radius:14px; overflow:hidden;
+    box-shadow:0 6px 14px #b0517a3a, 0 0 0 5px #fff, 0 0 0 7px var(--pink); z-index:2; }
+  .corner{ position:absolute; z-index:8; font-family:var(--hand); font-size:8.5px; color:var(--deep); background:#ffffffd8; padding:2px 7px; border-radius:9px; }
+  .credit{ position:absolute; right:16px; bottom:22px; z-index:9; font-size:7.5px; color:var(--muted); }
+
+  /* 内页通用 */
+  .itop{ position:relative; z-index:8; padding:14px 15px 0; display:flex; align-items:center; justify-content:space-between; }
+  .imast{ font-weight:800; font-size:19px; color:var(--deep); -webkit-text-stroke:1.2px #fff; paint-order:stroke fill; text-shadow:0 2px 0 #ffbdd6; }
+  .sectag{ position:relative; background:var(--deep); color:#fff; font-weight:800; font-size:11px; padding:5px 13px; border-radius:20px; box-shadow:0 3px 0 #ec5f9255; }
+  .sectag::before{ content:"❀ "; }
+  .lead{ margin:9px 16px 0; font-size:9px; line-height:1.6; color:var(--muted); }
+  .lead b{ color:var(--fg); }
+
+  .strip{ position:relative; z-index:7; display:flex; gap:8px; padding:12px 15px 0; }
+  .pola{ flex:1; background:#fff; padding:5px 5px 15px; box-shadow:0 5px 12px #b0517a28; }
+  .pola .pic{ height:150px; overflow:hidden; background:#ffd7e6; }
+  .pola .cap{ text-align:center; font-family:var(--hand); font-size:9px; color:var(--deep); margin-top:3px; }
+  .pola.a{ transform:rotate(-3deg); } .pola.b{ transform:rotate(2deg); }
+  .tape2{ position:absolute; width:40px; height:15px; background:#ffc9a9cc; z-index:9; }
+  .big{ position:relative; z-index:7; margin:12px 16px 0; background:#fff; padding:7px 7px 20px; box-shadow:0 6px 14px #b0517a2a; transform:rotate(-1deg); }
+  .big .pic{ height:270px; overflow:hidden; background:#ffd7e6; }
+  .big .cap{ text-align:center; font-family:var(--hand); font-size:11px; color:var(--deep); margin-top:5px; }
+  /* 饭绘·横构图 */
+  .fanland{ position:relative; z-index:7; margin:16px 16px 0; background:#fff; padding:7px 7px 18px; box-shadow:0 7px 16px #b0517a2e; transform:rotate(-1.2deg); }
+  .fanland .pic{ width:100%; aspect-ratio:3/2; overflow:hidden; background:#eef; }
+  .fanland .cap{ text-align:center; font-family:var(--hand); font-size:11px; color:var(--deep); margin-top:6px; }
+  .fanland .tapeg{ position:absolute; left:50%; top:-8px; transform:translateX(-50%) rotate(-2deg); width:64px; height:18px; background:#ffc9a9cc; z-index:9; box-shadow:0 1px 2px #0001; }
+
+  .news{ position:relative; z-index:7; margin:12px 16px 0; background:#fff; border:2.4px solid var(--pinklt); border-radius:16px; padding:10px 12px; box-shadow:0 4px 10px #ffabca24; }
+  .news .hd{ display:flex; align-items:center; gap:7px; }
+  .news .st{ background:var(--gold); color:#8a6410; font-weight:800; font-size:8px; padding:2px 8px; border-radius:20px; }
+  .news h3{ font-weight:800; font-size:15px; color:var(--fg); }
+  .news p{ margin-top:5px; font-size:9px; line-height:1.5; color:var(--muted); }
+
+  /* 樱花書架·整页 */
+  .shelf{ position:relative; z-index:7; margin:14px 18px 0; display:flex; gap:14px; }
+  .shelf .bcover{ flex:0 0 auto; width:132px; height:150px; overflow:hidden; border-radius:4px; box-shadow:0 8px 16px #7fa8c644, 0 0 0 4px #fff, 0 0 0 5px #e6cdd8; transform:rotate(-2deg); background:#dfeaf2; }
+  .shelf .bcover img{ width:100%; height:100%; object-fit:cover; }
+  .shelf .bt{ font-weight:800; font-size:9px; color:var(--deep); }
+  .shelf .bttl{ font-family:var(--mincho); font-weight:800; font-size:16px; margin:4px 0 3px; color:var(--fg); line-height:1.28; }
+  .shelf .bau{ font-size:9px; color:var(--muted); }
+  .shelf .stamp{ position:absolute; right:6px; top:-10px; width:44px; height:44px; border-radius:50%; background:var(--gold); color:#8a6410; font-weight:800; font-size:8px; display:grid; place-items:center; text-align:center; transform:rotate(11deg); box-shadow:0 2px 5px #0002; z-index:9; }
+  .shelfbody{ position:relative; z-index:7; margin:14px 18px 0; background:linear-gradient(#fff,#fff2f7); border:2.4px dashed var(--pink); border-radius:16px; padding:12px 13px; box-shadow:0 4px 10px #ffabca24; }
+  .shelfbody p{ font-size:10.5px; line-height:1.7; color:var(--fg); }
+  .shelfbody .q{ margin-top:8px; font-family:var(--hand); font-size:10px; color:var(--deep); }
+
+  .memo{ position:relative; z-index:7; margin:12px 16px 0; background:#fffdf3; border:1.5px solid #ffe0a8; border-radius:6px; padding:9px 11px; transform:rotate(-.5deg); box-shadow:1px 2px 0 #00000010; }
+  .memo .mk{ font-weight:800; font-size:8px; letter-spacing:.14em; color:var(--deep); }
+  .memo .mt{ font-family:var(--hand); font-size:11px; line-height:1.5; color:var(--fg); }
+
+  /* 行程表 */
+  .sched{ position:relative; z-index:7; margin:12px 16px 0; }
+  .srow{ display:flex; align-items:flex-start; gap:9px; margin-bottom:8px; }
+  .sdate{ flex:0 0 auto; width:46px; text-align:center; background:var(--deep); color:#fff; border-radius:10px; padding:5px 0; }
+  .sdate b{ display:block; font-size:15px; font-weight:800; line-height:1; }
+  .sdate span{ font-size:7px; }
+  .sinfo{ flex:1; background:#fff; border-radius:10px; padding:7px 9px; box-shadow:0 3px 8px #ffabca22; }
+  .sinfo .tg{ font-size:7px; font-weight:800; color:var(--gold); background:#fff3cf; padding:1px 6px; border-radius:20px; }
+  .sinfo .ti{ font-weight:800; font-size:11px; color:var(--fg); margin-top:2px; }
+  .sinfo .ds{ font-size:8px; color:var(--muted); }
+  .todo{ margin:2px 16px 0; font-size:8px; color:var(--muted); font-family:var(--hand); }
+</style>
+
+<div class="sheet">
+
+  <!-- ===== P1 头版 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="mtab">隔日刊</div>
+    <div class="badge"><div class="circ">1</div><div class="no">No.001</div></div>
+    <div class="mast">
+      <div class="flow"></div>
+      <div class="t"><span class="brk">🌸</span><span class="a">サ</span><span class="b">ク</span><span class="c">ラ</span><span class="d">新</span><span class="e">聞</span></div>
+      <span class="sub">まいにち、みやわきさくら</span>
+    </div>
+    <div class="ribbon"><div class="en">Pureflow TOUR D-1 ♡</div><div class="jp">粉发桃子姫、ツアー前夜のオフ日常</div></div>
+    <div class="stage">
+      <div class="doily"></div>
+      <div class="hero"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R84q6jKpo/img_01.jpg"></div>
+      <div class="corner" style="left:0;top:6px;transform:rotate(-6deg);">2026.07.09-10</div>
+      <div class="corner" style="right:2px;bottom:24px;transform:rotate(5deg);">新物料 11 図♡</div>
+    </div>
+    <span class="motif" style="left:22px;top:150px;font-size:18px;transform:rotate(-12deg)">🎀</span>
+    <span class="motif" style="right:24px;top:156px;font-size:14px">💗</span>
+    <span class="motif" style="left:120px;top:132px;font-size:12px">⭐</span>
+    <span class="motif" style="right:104px;top:130px;font-size:12px">🌸</span>
+    <div class="skpic" style="left:15px; bottom:40px;"><img src="../../assets/sakkukku/skk_01.jpg" style="object-position:center 30%"></div>
+    <div class="sktag" style="left:22px; bottom:30px;">sakkukku</div>
+    <div class="credit">cr｜39saku_chan（本人IG）</div>
+    <div class="pfoot">令和八年睦月 · 編集部</div><div class="pno">壱</div>
+  </div>
+
+  <!-- ===== P2 今日樱程 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">今日の樱程</div></div>
+    <div class="lead">开巡前夜双喜临门——先是音放捧杯，接着樱樱冒泡说要去彩排。<b>明日 Pureflow 第一场，东京见😭</b></div>
+    <div class="news"><div class="hd"><span class="st">🏆 今日头条</span><h3>音放一位到手！</h3></div>
+      <p>MCD「ICONIC BY MISTAKE」拿下一位——开巡前夜的最好礼物，我樱的团越来越好了🌸</p></div>
+    <div class="big" style="transform:rotate(1deg);"><div class="pic"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R84q6jKpo/img_08.jpg"></div><div class="cap">候场の樱、粉发咬一口甜甜圈🍩</div></div>
+    <div class="memo"><div class="mk">WEVERSE · 冒泡</div><div class="mt">樱樱：「现在要去现场彩排啦☺️」—— 第一场就在明天，紧张又期待🌸</div></div>
+    <span class="motif" style="right:14px;top:120px;font-size:13px;transform:rotate(12deg)">🎀</span>
+    <div class="pfoot">今日の樱程</div><div class="pno">弐</div>
+  </div>
+
+  <!-- ===== P3 美図·签售 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">美図 · 签售</div></div>
+    <div class="lead">MA 签售场の怼脸自拍，甜到失语🥹 粉发大眼比个耶，杀伤力拉满。</div>
+    <div class="strip">
+      <div class="tape2" style="left:46px;top:8px;transform:rotate(-8deg)"></div>
+      <div class="pola a"><div class="pic"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R7Tg43gGp/img_01.jpg"></div><div class="cap">MA签售·比耶自拍✌🏻</div></div>
+      <div class="pola b"><div class="pic"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R7Tg43gGp/img_02.jpg"></div><div class="cap">怼脸再来一张🥹</div></div>
+    </div>
+    <div class="memo"><div class="mk">EDITOR</div><div class="mt">这个笑容谁扛得住…粉发+奶桃针织，软到心脏骤停😭</div></div>
+    <span class="motif" style="left:14px;bottom:60px;font-size:15px">🌸</span>
+    <span class="motif" style="right:16px;bottom:66px;font-size:13px">💗</span>
+    <div class="pfoot">美図 · MA签售</div><div class="pno">参</div>
+  </div>
+
+  <!-- ===== P4 饭拍 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">饭拍 · 近距离</div></div>
+    <div class="lead">WM 线下签售饭拍高清——水手服樱花叼着大力士吐司、头上还别着 sakkukku🐱 这么可爱真的犯规。</div>
+    <div class="strip">
+      <div class="tape2" style="left:150px;top:8px;transform:rotate(6deg)"></div>
+      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R7U1QmH35/img_01.jpg"></div><div class="cap">叼吐司·水手服樱🍞</div></div>
+      <div class="pola b" style="transform:rotate(2deg)"><div class="pic"><img class="im" src="../../data/weibo/2026-07-11/6591486070/R7U1QmH35/img_02.jpg"></div><div class="cap">近距离美貌暴击</div></div>
+    </div>
+    <div class="memo"><div class="mt">cr｜Yeonwonie_0319　感谢站姐的神图🙏🏻</div></div>
+    <span class="motif" style="right:14px;bottom:78px;font-size:13px;transform:rotate(10deg)">💗</span>
+    <span class="motif" style="left:16px;bottom:70px;font-size:14px">🎀</span>
+    <div class="pfoot">饭拍 · WM签售</div><div class="pno">肆</div>
+  </div>
+
+  <!-- ===== P5 特集·饭绘 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">特集 · 饭绘</div></div>
+    <div class="lead">本期最佳饭绘🎨 @Teeth 笔下柠檬黄背景的樱花——含泪的眼睛看一次心颤一次，太会画了。</div>
+    <div class="fanland">
+      <div class="tapeg"></div>
+      <div class="pic"><img class="im" src="assets/fanart_cw.jpg" style="object-position:center 30%"></div>
+      <div class="cap">柠檬黄背景の樱花，绝了🎨 &nbsp;cr｜Teeth2333</div>
+    </div>
+    <div class="news" style="margin-top:14px;"><div class="hd"><span class="st">🐱 队友</span><h3>连队友都在 cue 我樱</h3></div>
+      <p>成员「喵喵」更新带上了 #SAKURA #overwatch🐱 队友都在推我樱，人气实锤😽</p></div>
+    <span class="motif" style="right:16px;bottom:24px;font-size:14px;transform:rotate(-8deg)">🌸</span>
+    <div class="pfoot">特集 · 饭绘</div><div class="pno">伍</div>
+  </div>
+
+  <!-- ===== P6 樱花書架（整页） ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">樱花書架</div></div>
+    <div class="lead">固定栏目 · 每期一本咲良读过的书。本期选自她的「2026年1月读过的书📕」🌸</div>
+    <div class="shelf">
+      <div class="stamp">読書<br>印章</div>
+      <div class="bcover"><img src="../../assets/books/noguchi_cover.jpg"></div>
+      <div>
+        <div class="bt">❀ 宮脇咲良の読書リストより</div>
+        <div class="bttl">どう生きるか<br>つらかったときの話をしよう</div>
+        <div class="bau">野口聡一 著 ／ 宇宙飛行士</div>
+      </div>
+    </div>
+    <div class="shelfbody">
+      <p>资深宇航员野口聡一写的人生随笔，副题是「毫无悔恨地活着，比宇宙飞行更难」。他把三度飞向太空的经历，酿成面对艰难、如何抉择、如何不留遗憾过日子的心得。</p>
+      <div class="q">樱樱说 2026 是「读书让自己振作的一年」——正呼应她那句「为了未来不后悔而每天努力」🌸</div>
+    </div>
+    <span class="motif" style="left:16px;bottom:26px;font-size:14px">🚀</span>
+    <span class="motif" style="right:18px;bottom:30px;font-size:13px;transform:rotate(10deg)">🌸</span>
+    <div class="pfoot">樱花書架 · 第壱回</div><div class="pno">陸</div>
+  </div>
+
+  <!-- ===== P7 今後の樱程 ===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">今後の樱程</div></div>
+    <div class="lead">接下来几天，跟着樱樱的脚步不迷路🌸（日程持续更新）</div>
+    <div class="sched">
+      <div class="srow"><div class="sdate"><b>11</b><span>THU</span></div><div class="sinfo"><span class="tg">TOUR</span><div class="ti">Pureflow TOUR 開幕</div><div class="ds">2026 LE SSERAFIM TOUR 第一场 · 東京</div></div></div>
+      <div class="srow"><div class="sdate"><b>12</b><span>FRI</span></div><div class="sinfo"><span class="tg">TOUR</span><div class="ti">Pureflow TOUR Day2</div><div class="ds">巡演进行中～</div></div></div>
+      <div class="srow"><div class="sdate"><b>–</b><span>SOON</span></div><div class="sinfo"><span class="tg">物料</span><div class="ti">amazonmusic · snapchat 物料续更</div><div class="ds">一手 IG / weverse 随时冒泡</div></div></div>
+    </div>
+    <div class="todo">＊具体场次与时间以官方公告为准，本栏每期更新。</div>
+    <div class="memo"><div class="mk">EDITOR · 碎碎念</div><div class="mt">D-1就这么惬意可爱，正式开巡恐怕要萌到原地升天😭 卷毛小樱先别急着这么好看，等等我～</div></div>
+    <span class="motif" style="left:14px;bottom:20px;font-size:14px;transform:rotate(-8deg)">🌸</span>
+    <span class="motif" style="right:18px;bottom:60px;font-size:13px">💗</span>
+    <div class="pfoot">今後の樱程 · 完</div><div class="pno">七</div>
+  </div>
+
+</div>
