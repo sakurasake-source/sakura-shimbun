@@ -110,7 +110,8 @@ def main():
         )
         ctx.add_cookies(cookies)
         page = ctx.pages[0] if ctx.pages else ctx.new_page()
-        # goto 偶发网络超时（已实测发生过），自动重试 3 次
+        # goto 偶发网络超时（已实测发生过），自动重试 3 次。
+        # 用 time.sleep 而非 page.wait_for_timeout：页面若已异常，别把小故障级联成崩溃。
         for attempt in range(1, 4):
             try:
                 page.goto(PUBLISH_URL, wait_until="domcontentloaded", timeout=45000)
@@ -119,7 +120,9 @@ def main():
                 if attempt == 3:
                     raise
                 print(f"goto 第{attempt}次失败（{type(e).__name__}），{attempt*5}s 后重试…")
-                page.wait_for_timeout(attempt * 5000)
+                time.sleep(attempt * 5)
+                if page.is_closed():   # 页面被关了就新开一个再试
+                    page = ctx.new_page()
         page.wait_for_timeout(4000)
         page.screenshot(path=str(d / "xhs_load.png"), full_page=True)
         print("加载态已截图 xhs_load.png，标题=", page.title())
@@ -299,19 +302,36 @@ def main():
             page.screenshot(path=str(d / "xhs_published.png"), full_page=True)
             print("发布动作完成（仅自己可见）。当前URL:", page.url)
         elif args.mode == "draft":
-            # 稳妥定位「暂存离开」：滚动到视口 + 自动等待
+            # 「暂存离开」是纯 div 无 role，button:has-text 抓不到 → get_by_text + 坐标兜底
             btn = None
-            for sel in ['button:has-text("暂存离开")', 'text=暂存离开',
-                        'button:has-text("存草稿")', 'text=保存草稿']:
-                loc = page.locator(sel).first
+            for getter in (lambda: page.get_by_text("暂存离开", exact=True).first,
+                           lambda: page.get_by_text("存草稿", exact=True).first,
+                           lambda: page.locator("text=暂存离开").first):
                 try:
+                    loc = getter()
                     loc.wait_for(state="visible", timeout=6000)
                     loc.scroll_into_view_if_needed(timeout=3000)
                     btn = loc
                     break
                 except Exception:
                     continue
-            if btn:
+            if not btn:
+                # 坐标兜底：底部左侧白键（发布红键在 ~0.52，暂存在其左 ~0.42）
+                vw = page.viewport_size
+                print("定位器未命中，改用坐标点击底部『暂存离开』白键")
+                page.mouse.click(int(vw["width"] * 0.42), vw["height"] - 45)
+                page.wait_for_timeout(1500)
+                page.screenshot(path=str(d / "xhs_draft_1.png"), full_page=True)
+                confirm = first_visible(page, [
+                    'button:has-text("确认")', 'button:has-text("确定")',
+                    'button:has-text("离开")', 'text=确认离开', 'button:has-text("继续")',
+                ], timeout=4000)
+                if confirm:
+                    confirm.click(); page.wait_for_timeout(3500)
+                page.screenshot(path=str(d / "xhs_draft_2.png"), full_page=True)
+                print("draft 坐标兜底流程结束，当前URL:", page.url)
+                btn = "coord"  # 标记已处理，跳过下面的 locator 分支
+            if btn and btn != "coord":
                 btn.click()
                 print("已点『暂存离开』，等待可能的二次确认…")
                 page.wait_for_timeout(1500)
@@ -330,20 +350,7 @@ def main():
                     print("未发现二次确认弹窗（可能已直接保存）")
                 page.screenshot(path=str(d / "xhs_draft_2.png"), full_page=True)
                 print("draft 流程结束，当前URL:", page.url)
-            else:
-                page.screenshot(path=str(d / "xhs_draft_notfound.png"), full_page=True)
-                try:
-                    els = page.eval_on_selector_all(
-                        "button,[role=button],span,div",
-                        "ns => ns.filter(n=>/暂存|存草稿|离开|发布/.test((n.textContent||''))"
-                        " && (n.textContent||'').trim().length<12)"
-                        ".map(n=>({tag:n.tagName,cls:(n.className||'').toString().slice(0,40),txt:(n.textContent||'').trim()}))"
-                        ".slice(0,12)")
-                    print("候选[暂存/离开/发布]元素:", els)
-                except Exception as e:
-                    print("dump失败", e)
-                print("frames:", [f.url for f in page.frames])
-                print("没找到存草稿按钮，已截图 xhs_draft_notfound.png")
+            # btn == "coord" 时坐标兜底分支已完成保存，无需再走"未找到"逻辑
         else:
             print(f"=== FILLED 完成，绝不自动发布。窗口保持 {args.hold}s，请审核后自己点『发布』 ===")
             page.wait_for_timeout(args.hold * 1000)
