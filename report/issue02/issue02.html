@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <title>サクラ新聞 第弐号</title>
 <!-- 書架履歴: vol.1 野口聡一『どう生きるか』 / vol.2 ヒコロヒー『黙って喋って』 -->
+<!-- cr: p1/p3/IMG_6733/IMG_6731=Maltese0319, p2/p4=maplensakura, p5=cat, IMG_6735/6736=Mystery Lover, 長粉巻=Anthea0319, 黒裙=39saki_Cosmos -->
 <style>
   :root{
     /* 第弐号スキン：プールブルー × 樱花粉（PUREFLOW 開巡特集） */
@@ -32,13 +33,18 @@
   .pno{ position:absolute; right:14px; bottom:8px; z-index:9; font-family:var(--mincho); font-weight:800; font-size:10px; color:var(--deep); }
   img.im{ width:100%; height:100%; object-fit:cover; display:block; }
 
-  .skpic{ position:absolute; z-index:9; width:74px; height:74px; border-radius:50%; overflow:hidden;
-    box-shadow:0 4px 10px #3d7f9455, 0 0 0 4px #fff, 0 0 0 6px var(--pink); }
-  .skpic img{ width:100%; height:100%; object-fit:cover; }
+  /* 編集部印（sakkukku 位替换：不用任何角色/他人摄影素材） */
+  .edstamp{ position:absolute; z-index:9; width:74px; height:74px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #ffe1ec, #f9b6cd 58%, #f584ae);
+    box-shadow:0 4px 10px #3d7f9455, 0 0 0 4px #fff, 0 0 0 6px var(--pink);
+    display:grid; place-items:center; text-align:center; transform:rotate(-7deg); }
+  .edstamp .in{ font-family:var(--round); font-weight:900; font-size:12px; line-height:1.35; color:#fff;
+    text-shadow:0 1px 0 #d5397a66; }
+  .edstamp .in small{ display:block; font-size:7px; letter-spacing:.2em; font-weight:800; }
   .sktag{ position:absolute; z-index:10; background:var(--deep); color:#fff; font-weight:800; font-size:7px;
     padding:2px 6px; border-radius:20px; box-shadow:0 2px 3px #0002; }
 
-  /* 报头（第弐号：字体更圆润 Yuanti） */
+  /* 报头（字体更圆润 Yuanti） */
   .mtab{ position:absolute; left:13px; top:12px; z-index:8; background:var(--deep); color:#fff; font-weight:800; font-size:8px;
     padding:8px 3px; border-radius:5px; writing-mode:vertical-rl; letter-spacing:.16em; }
   .badge{ position:absolute; right:12px; top:8px; z-index:10; text-align:center; transform:rotate(6deg); }
@@ -110,22 +116,22 @@
   .memo .mk{ font-weight:800; font-size:8px; letter-spacing:.14em; color:var(--deep); }
   .memo .mt{ font-family:var(--hand); font-size:11px; line-height:1.5; color:var(--fg); }
 
-  .sched{ position:relative; z-index:7; margin:12px 16px 0; }
-  .srow{ display:flex; align-items:flex-start; gap:9px; margin-bottom:8px; }
-  .sdate{ flex:0 0 auto; width:52px; text-align:center; background:var(--deep); color:#fff; border-radius:10px; padding:5px 0; }
-  .sdate b{ display:block; font-size:13px; font-weight:800; line-height:1.15; }
+  .sched{ position:relative; z-index:7; margin:10px 16px 0; }
+  .srow{ display:flex; align-items:flex-start; gap:9px; margin-bottom:6px; }
+  .sdate{ flex:0 0 auto; width:52px; text-align:center; background:var(--deep); color:#fff; border-radius:10px; padding:4px 0; }
+  .sdate b{ display:block; font-size:12px; font-weight:800; line-height:1.15; }
   .sdate span{ font-size:7px; }
-  .sinfo{ flex:1; background:#fff; border-radius:10px; padding:7px 9px; box-shadow:0 3px 8px #93d6e435; }
+  .sinfo{ flex:1; background:#fff; border-radius:10px; padding:5px 9px 6px; box-shadow:0 3px 8px #93d6e435; }
   .sinfo .tg{ font-size:7px; font-weight:800; color:#8a6410; background:#fff3cf; padding:1px 6px; border-radius:20px; }
   .sinfo .tg.b{ color:#1d84a3; background:#dff2f8; }
-  .sinfo .ti{ font-weight:800; font-size:11px; color:var(--fg); margin-top:2px; }
+  .sinfo .ti{ font-weight:800; font-size:10.5px; color:var(--fg); margin-top:2px; }
   .sinfo .ds{ font-size:8px; color:var(--muted); }
   .todo{ margin:2px 16px 0; font-size:8px; color:var(--muted); font-family:var(--hand); }
 </style>
 
 <div class="sheet">
 
-  <!-- ===== P1 表紙 ===== -->
+  <!-- ===== P1 表紙（图1 Maltese0319）===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="mtab">隔日刊</div>
@@ -138,7 +144,7 @@
     <div class="ribbon"><div class="en">PUREFLOW 開巡！</div><div class="jp">仁川二日、樱色満開</div></div>
     <div class="stage">
       <div class="doily"></div>
-      <div class="hero"><img class="im" src="../../data/weibo/2026-07-15/6591486070/R8GXCDyrv/img_02.jpg" style="object-position:center 12%"></div>
+      <div class="hero"><img class="im" src="assets/p1.jpg" style="object-position:center 10%"></div>
       <div class="corner" style="left:0;top:6px;transform:rotate(-6deg);">2026.07.11-15</div>
       <div class="corner" style="right:2px;bottom:24px;transform:rotate(5deg);">開巡特集号♡</div>
     </div>
@@ -147,44 +153,89 @@
     <span class="motif" style="left:120px;top:132px;font-size:12px">✨</span>
     <span class="motif" style="right:104px;top:130px;font-size:12px">🌸</span>
     <span class="motif" style="right:44px;top:300px;font-size:13px;transform:rotate(9deg)">🎶</span>
-    <div class="skpic" style="left:15px; bottom:40px;"><img src="../../assets/sakkukku/skk_02.jpg" style="object-position:center 30%"></div>
-    <div class="sktag" style="left:22px; bottom:30px;">sakkukku</div>
-    <div class="credit">cr｜SAKKI</div>
+    <div class="edstamp" style="left:15px; bottom:40px;"><div class="in">祝<br>開巡<small>SAKURA PRESS</small></div></div>
+    <div class="sktag" style="left:22px; bottom:30px;">編集部</div>
+    <div class="credit">cr｜Maltese0319</div>
     <div class="pfoot">令和八年文月 · 編集部</div><div class="pno">壱</div>
   </div>
 
-  <!-- ===== P2 ライブレポ① ===== -->
+  <!-- ===== P2 ライブレポ①（保留・站姐名修正）===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ライブレポ ①</div></div>
     <div class="lead">PUREFLOW 世界巡演 7/11 仁川开幕！蓝色灯海里的长粉卷，开口第一句就知道——<b>这一巡稳了。</b></div>
-    <div class="big" style="transform:rotate(1deg);"><div class="pic" style="height:172px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_01.jpg" style="object-position:center 8%"></div><div class="cap">長い粉巻き、権威です🫡　cr｜Anthea</div></div>
+    <div class="big" style="transform:rotate(1deg);"><div class="pic" style="height:172px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_01.jpg" style="object-position:center 8%"></div><div class="cap">長い粉巻き、権威です🫡　cr｜Anthea0319</div></div>
     <div class="strip" style="padding-top:8px;">
       <div class="tape2" style="left:46px;top:2px;transform:rotate(-8deg)"></div>
-      <div class="pola a" style="padding-bottom:11px;"><div class="pic" style="height:112px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_02.jpg" style="object-position:center 10%"></div><div class="cap">手のフレーム越し👁 cr｜Anthea</div></div>
-      <div class="pola b" style="padding-bottom:11px;"><div class="pic" style="height:112px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_05.jpg" style="object-position:center 14%"></div><div class="cap">黒裙×青光 cr｜Saki_Cosmose</div></div>
+      <div class="pola a" style="padding-bottom:11px;"><div class="pic" style="height:112px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_02.jpg" style="object-position:center 10%"></div><div class="cap">手のフレーム越し👁 cr｜Anthea0319</div></div>
+      <div class="pola b" style="padding-bottom:11px;"><div class="pic" style="height:112px;"><img class="im" src="../../data/weibo/2026-07-12/5664006997/R8ecZspyY/img_05.jpg" style="object-position:center 14%"></div><div class="cap">黒裙×青光 cr｜39saki_Cosmos</div></div>
     </div>
     <span class="motif" style="right:14px;top:118px;font-size:13px;transform:rotate(12deg)">💧</span>
     <div class="pfoot">ライブレポ · 仁川</div><div class="pno">弐</div>
   </div>
 
-  <!-- ===== P3 ライブレポ② ===== -->
+  <!-- ===== P3 ライブレポ② GIA look（图2+图3）===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ライブレポ ②</div></div>
-    <div class="lead">二日目连开！蓝皮衣 GIA 舞台×粉光高马尾——一蓝一粉，两种颜色两种杀伤力。</div>
+    <div class="lead">衣装特辑・GIA GIRL NEXT DOOR——白背心×蓝皮衣×豹纹短裤，本巡最出圈的一套。</div>
     <div class="strip" style="padding-top:14px;">
       <div class="tape2" style="left:150px;top:8px;transform:rotate(6deg)"></div>
-      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic" style="height:224px;"><img class="im" src="../../data/weibo/2026-07-13/6591486070/R8scZDXoA/img_01.jpg" style="object-position:center 15%"></div><div class="cap">青ジャケットのGIA様💙</div></div>
-      <div class="pola b" style="transform:rotate(2deg)"><div class="pic" style="height:224px;"><img class="im" src="../../data/weibo/2026-07-13/6591486070/R8scZDXoA/img_04.jpg" style="object-position:center 12%"></div><div class="cap">ポニーテール横顔🩷</div></div>
+      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic" style="height:224px;"><img class="im" src="assets/p2.jpg" style="object-position:center 12%"></div><div class="cap">んー😗 ピースのおまけ付き</div></div>
+      <div class="pola b" style="transform:rotate(2deg)"><div class="pic" style="height:224px;"><img class="im" src="assets/p3.jpg" style="object-position:center 10%"></div><div class="cap">金色ライトに溶ける横顔</div></div>
     </div>
-    <div class="memo"><div class="mt">cr｜Maltese（260712 仁川D2）　高马尾一甩，粉发权威再+1🙏🏻</div></div>
+    <div class="memo"><div class="mt">cr｜maplensakura（左）· Maltese0319（右）　嘟嘴和高冷，同一套衣服两种人格😗</div></div>
     <span class="motif" style="left:16px;bottom:78px;font-size:14px">🫧</span>
     <span class="motif" style="right:16px;bottom:84px;font-size:13px;transform:rotate(10deg)">✨</span>
-    <div class="pfoot">ライブレポ · 仁川D2</div><div class="pno">参</div>
+    <div class="pfoot">ライブレポ · GIA</div><div class="pno">参</div>
   </div>
 
-  <!-- ===== P4 樱言樱语 ===== -->
+  <!-- ===== P4 ライブレポ③ 森系軍緑 look（图8+图4+图9）===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ライブレポ ③</div></div>
+    <div class="lead">衣装特辑・森の妖精——军绿蕾丝＋宝石刺绣束腰，战损风与仙气并存的一套。</div>
+    <div class="strip" style="padding-top:16px;">
+      <div class="tape2" style="left:52px;top:8px;transform:rotate(-8deg)"></div>
+      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic" style="height:238px;"><img class="im" src="assets/IMG_6733.jpg" style="object-position:center 18%"></div><div class="cap">妖精、降臨🧚</div></div>
+      <div class="pola b" style="transform:rotate(1.5deg)"><div class="pic" style="height:238px;"><img class="im" src="assets/p4.jpg" style="object-position:center 8%"></div><div class="cap">赤いライトの横顔</div></div>
+    </div>
+    <div class="strip" style="padding-top:10px;">
+      <div class="pola" style="transform:rotate(-1deg); flex:0 0 46%; margin-left:8px;"><div class="pic" style="height:96px;"><img class="im" src="assets/IMG_6731.jpg" style="object-position:center 6%"></div><div class="cap">紫光とポーズ</div></div>
+      <div class="memo" style="flex:1; margin:6px 0 0 4px; align-self:flex-start;"><div class="mt">cr｜Maltese0319（左・下）<br>maplensakura（右）</div></div>
+    </div>
+    <span class="motif" style="right:14px;top:118px;font-size:13px;transform:rotate(12deg)">🌿</span>
+    <div class="pfoot">ライブレポ · 森系</div><div class="pno">肆</div>
+  </div>
+
+  <!-- ===== P5 ライブレポ④ ブルードレス look（图6+图7 Mystery Lover）===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ライブレポ ④</div></div>
+    <div class="lead">衣装特辑・青のドレス——白纱外套＋印花抹胸，整个人融进蓝色灯光里。</div>
+    <div class="strip" style="padding-top:14px;">
+      <div class="tape2" style="left:150px;top:8px;transform:rotate(6deg)"></div>
+      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic" style="height:246px;"><img class="im" src="assets/IMG_6735.jpg" style="object-position:center 10%"></div><div class="cap">青の世界のほほえみ</div></div>
+      <div class="pola b" style="transform:rotate(2deg)"><div class="pic" style="height:246px;"><img class="im" src="assets/IMG_6736.jpg" style="object-position:center 10%"></div><div class="cap">こっちに手を振ってくれた👋</div></div>
+    </div>
+    <div class="memo"><div class="mt">cr｜Mystery Lover　这个滤镜下的樱，像蓝色梦境里的人物🫧</div></div>
+    <span class="motif" style="left:16px;bottom:78px;font-size:14px">💙</span>
+    <span class="motif" style="right:16px;bottom:84px;font-size:13px;transform:rotate(10deg)">🫧</span>
+    <div class="pfoot">ライブレポ · 青</div><div class="pno">伍</div>
+  </div>
+
+  <!-- ===== P6 本期ベストショット（图5 cat）===== -->
+  <div class="page">
+    <div class="lace"></div>
+    <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ベストショット</div></div>
+    <div class="lead">编辑部全票通过的本期最佳——黑衣×紫光×过膝靴，气场直接溢出版面。</div>
+    <div class="big" style="transform:rotate(-.6deg); margin-top:14px;"><div class="pic" style="height:292px; background:#efe6f2;"><img class="im" src="assets/p5.jpg" style="object-fit:contain;"></div><div class="cap">ニーハイブーツ×紫光、危険度MAX🖤 cr｜cat</div></div>
+    <div class="memo" style="margin-top:10px;"><div class="mt">A面樱花的含金量还在上升。这张打印出来能当海报。</div></div>
+    <span class="motif" style="right:18px;top:120px;font-size:13px;transform:rotate(9deg)">🖤</span>
+    <div class="pfoot">本期ベストショット</div><div class="pno">陸</div>
+  </div>
+
+  <!-- ===== P7 樱言樱语 ===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">樱言樱语</div></div>
@@ -195,10 +246,10 @@
       <p>看直播看进去了，猫猫伸手要接屏幕里飞来的球🤦 这个反射弧，可爱到需要保护。</p></div>
     <div class="memo"><div class="mk">前情回顾 · 金句</div><div class="mt">「有男朋友吗？」「就是因为太可爱了呀，没有和我般配的人😌」——上期名场面，重读依然理直气壮。</div></div>
     <span class="motif" style="right:16px;bottom:26px;font-size:14px;transform:rotate(-8deg)">🌸</span>
-    <div class="pfoot">樱言樱语</div><div class="pno">肆</div>
+    <div class="pfoot">樱言樱语</div><div class="pno">七</div>
   </div>
 
-  <!-- ===== P5 IG便り ===== -->
+  <!-- ===== P8 IG便り ===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">IG便り</div></div>
@@ -210,10 +261,10 @@
     </div>
     <div class="memo"><div class="mt">拼图排版好有 sense，kkura喵喵 is playing🐱　cr｜咲良IG @39saku_chan</div></div>
     <span class="motif" style="left:18px;bottom:80px;font-size:13px">🎈</span>
-    <div class="pfoot">IG便り · 260714</div><div class="pno">伍</div>
+    <div class="pfoot">IG便り · 260714</div><div class="pno">八</div>
   </div>
 
-  <!-- ===== P6 樱花書架 vol.2 ===== -->
+  <!-- ===== P9 樱花書架 vol.2 ===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">樱花書架</div></div>
@@ -234,25 +285,26 @@
     </div>
     <span class="motif" style="left:16px;bottom:26px;font-size:14px">📖</span>
     <span class="motif" style="right:18px;bottom:30px;font-size:13px;transform:rotate(10deg)">🌸</span>
-    <div class="pfoot">樱花書架 · 第弐回</div><div class="pno">陸</div>
+    <div class="pfoot">樱花書架 · 第弐回</div><div class="pno">九</div>
   </div>
 
-  <!-- ===== P7 今後の樱程 ===== -->
+  <!-- ===== P10 今後の樱程 ===== -->
   <div class="page">
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">今後の樱程</div></div>
-    <div class="lead">仁川场完美收官，巡演进入小休整——<b>下一站，日本！</b>（出典：官方 SCHEDULE）</div>
+    <div class="lead">仁川收官不到两周，<b>7/25 大阪、日本场开幕！</b>（出典：官方 SCHEDULE）</div>
     <div class="sched">
-      <div class="srow"><div class="sdate"><b>8/8·9</b><span>SAT·SUN</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 静岡</div><div class="ds">日本场开幕二连</div></div></div>
+      <div class="srow"><div class="sdate"><b>7/25·26</b><span>SAT·SUN</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 大阪</div><div class="ds">日本场开幕二连</div></div></div>
+      <div class="srow"><div class="sdate"><b>7/30·8/1</b><span>THU·SAT</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 神奈川</div><div class="ds">首都圈连开两场</div></div></div>
+      <div class="srow"><div class="sdate"><b>8/8·9</b><span>SAT·SUN</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 静岡</div><div class="ds">巡演继续南下</div></div></div>
       <div class="srow"><div class="sdate"><b>8/14·16</b><span>FRI·SUN</span></div><div class="sinfo"><span class="tg">FES</span><div class="ti">SUMMER SONIC 2026</div><div class="ds">大阪(8/14) · 東京(8/16)</div></div></div>
       <div class="srow"><div class="sdate"><b>8/18·19</b><span>TUE·WED</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 宮城</div><div class="ds">东北的夏天有樱花</div></div></div>
       <div class="srow"><div class="sdate"><b>9/2·3</b><span>WED·THU</span></div><div class="sinfo"><span class="tg b">TOUR</span><div class="ti">PUREFLOW IN JAPAN · 福岡</div><div class="ds">回到九州🌸</div></div></div>
     </div>
     <div class="todo">＊日程出自 le-sserafim.jp 官方 SCHEDULE，会場等以官方公告为准。</div>
-    <div class="memo"><div class="mk">EDITOR · 碎碎念</div><div class="mt">开巡两场刷完九宫格，存货够回味一个月。八月的日本场，这次是主场作战了🌸</div></div>
     <span class="motif" style="left:14px;bottom:20px;font-size:14px;transform:rotate(-8deg)">🗾</span>
     <span class="motif" style="right:18px;bottom:60px;font-size:13px">💧</span>
-    <div class="pfoot">今後の樱程 · 完</div><div class="pno">七</div>
+    <div class="pfoot">今後の樱程 · 完</div><div class="pno">十</div>
   </div>
 
 </div>
