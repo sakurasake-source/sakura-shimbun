@@ -33,14 +33,10 @@
   .pno{ position:absolute; right:14px; bottom:8px; z-index:9; font-family:var(--mincho); font-weight:800; font-size:10px; color:var(--deep); }
   img.im{ width:100%; height:100%; object-fit:cover; display:block; }
 
-  /* 編集部印（sakkukku 位替换：不用任何角色/他人摄影素材） */
-  .edstamp{ position:absolute; z-index:9; width:74px; height:74px; border-radius:50%;
-    background:radial-gradient(circle at 32% 28%, #ffe1ec, #f9b6cd 58%, #f584ae);
-    box-shadow:0 4px 10px #3d7f9455, 0 0 0 4px #fff, 0 0 0 6px var(--pink);
-    display:grid; place-items:center; text-align:center; transform:rotate(-7deg); }
-  .edstamp .in{ font-family:var(--round); font-weight:900; font-size:12px; line-height:1.35; color:#fff;
-    text-shadow:0 1px 0 #d5397a66; }
-  .edstamp .in small{ display:block; font-size:7px; letter-spacing:.2em; font-weight:800; }
+  /* sakkukku 圆形照片贴纸（用户提供的图，每期换姿势） */
+  .skpic{ position:absolute; z-index:9; width:74px; height:74px; border-radius:50%; overflow:hidden;
+    box-shadow:0 4px 10px #3d7f9455, 0 0 0 4px #fff, 0 0 0 6px var(--pink); }
+  .skpic img{ width:100%; height:100%; object-fit:cover; }
   .sktag{ position:absolute; z-index:10; background:var(--deep); color:#fff; font-weight:800; font-size:7px;
     padding:2px 6px; border-radius:20px; box-shadow:0 2px 3px #0002; }
 
@@ -153,8 +149,8 @@
     <span class="motif" style="left:120px;top:132px;font-size:12px">✨</span>
     <span class="motif" style="right:104px;top:130px;font-size:12px">🌸</span>
     <span class="motif" style="right:44px;top:300px;font-size:13px;transform:rotate(9deg)">🎶</span>
-    <div class="edstamp" style="left:15px; bottom:40px;"><div class="in">祝<br>開巡<small>SAKURA PRESS</small></div></div>
-    <div class="sktag" style="left:22px; bottom:30px;">編集部</div>
+    <div class="skpic" style="left:15px; bottom:40px;"><img src="../../assets/sakkukku/skk_02.jpg" style="object-position:center 30%"></div>
+    <div class="sktag" style="left:22px; bottom:30px;">sakkukku</div>
     <div class="credit">cr｜Maltese0319</div>
     <div class="pfoot">令和八年文月 · 編集部</div><div class="pno">壱</div>
   </div>
@@ -195,16 +191,16 @@
     <div class="lace"></div>
     <div class="itop"><div class="imast">サクラ新聞</div><div class="sectag">ライブレポ ③</div></div>
     <div class="lead">衣装特辑・森の妖精——军绿蕾丝＋宝石刺绣束腰，战损风与仙气并存的一套。</div>
-    <div class="strip" style="padding-top:16px;">
-      <div class="tape2" style="left:52px;top:8px;transform:rotate(-8deg)"></div>
-      <div class="pola a" style="transform:rotate(-2deg)"><div class="pic" style="height:238px;"><img class="im" src="assets/IMG_6733.jpg" style="object-position:center 18%"></div><div class="cap">妖精、降臨🧚</div></div>
-      <div class="pola b" style="transform:rotate(1.5deg)"><div class="pic" style="height:238px;"><img class="im" src="assets/p4.jpg" style="object-position:center 8%"></div><div class="cap">赤いライトの横顔</div></div>
-    </div>
-    <div class="strip" style="padding-top:10px;">
-      <div class="pola" style="transform:rotate(-1deg); flex:0 0 46%; margin-left:8px;"><div class="pic" style="height:96px;"><img class="im" src="assets/IMG_6731.jpg" style="object-position:center 6%"></div><div class="cap">紫光とポーズ</div></div>
-      <div class="memo" style="flex:1; margin:6px 0 0 4px; align-self:flex-start;"><div class="mt">cr｜Maltese0319（左・下）<br>maplensakura（右）</div></div>
+    <div class="strip" style="padding-top:14px; align-items:flex-start;">
+      <div class="tape2" style="left:52px;top:6px;transform:rotate(-8deg)"></div>
+      <div class="pola a" style="flex:0 0 50%; transform:rotate(-1.5deg);"><div class="pic" style="height:308px;"><img class="im" src="assets/IMG_6733.jpg" style="object-position:center 20%"></div><div class="cap">妖精、降臨🧚 cr｜Maltese0319</div></div>
+      <div style="flex:1; display:flex; flex-direction:column; gap:10px;">
+        <div class="pola b" style="transform:rotate(1.6deg);"><div class="pic" style="height:128px;"><img class="im" src="assets/p4.jpg" style="object-position:center 6%"></div><div class="cap">赤い横顔 cr｜maplensakura</div></div>
+        <div class="pola" style="transform:rotate(-1.2deg);"><div class="pic" style="height:128px;"><img class="im" src="assets/IMG_6731.jpg" style="object-position:center 5%"></div><div class="cap">紫光ポーズ cr｜Maltese0319</div></div>
+      </div>
     </div>
     <span class="motif" style="right:14px;top:118px;font-size:13px;transform:rotate(12deg)">🌿</span>
+    <span class="motif" style="left:18px;bottom:26px;font-size:13px">🧚</span>
     <div class="pfoot">ライブレポ · 森系</div><div class="pno">肆</div>
   </div>
 
